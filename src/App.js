@@ -44,6 +44,7 @@ function App() {
     const loc = locations[locKey];
     setLat(loc.lat.toString());
     setLong(loc.long.toString());
+    fetchWeather()
   };
 
   const resetWeather = () => {
