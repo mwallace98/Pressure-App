@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './App.css';
-import { use } from 'react';
+
 
 function App() {
 
@@ -14,7 +14,8 @@ function App() {
   const [long,setLong] = useState('')
 
   const locations = {
-     Oxford: { lat: 42.117039, long:-71.864723, label:'Oxford MA'}
+     Oxford: { lat: 42.117039, long:-71.864723, label:'Oxford MA'},
+     Douglas: {lat: 42.052819, long: -71.739823, label:'Douglas MA'}
     }
   const fetchWeather = (latValue,longValue) => {
    
@@ -85,7 +86,7 @@ function App() {
         </div>
         {weatherData.main ? (
           <div className="weather-card">
-            <p><strong>Temperature:</strong> {weatherData.main.temp * 9/5 + 32}°F</p>
+            <p><strong>Temperature:</strong> {(weatherData.main.temp * 9/5 + 32).toFixed(0)}°F</p>
             <p><strong>Pressure:</strong> {(weatherData.main.pressure / 33.89).toFixed(2)} inHg</p>
             <p><strong>Humidity:</strong> {weatherData.main.humidity}%</p>
           </div>
