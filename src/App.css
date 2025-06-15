@@ -5,14 +5,18 @@
 
 
 .App-header {
-  background-color: #adaeaa;
+  background-color: #f5f5dc;
+  background-image: url('pexels-pixabay-531767.jpg');
+  background-size: contain;       
+  background-repeat: no-repeat;  
+  background-position: center;   
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #333;
 }
 
 .App-link {
@@ -26,7 +30,7 @@
   padding: 1rem 2rem;
   margin-top: 1rem;
   width: 300px;
-  color: #f0eeee;
+  color: #333333;
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
@@ -43,4 +47,55 @@
   margin-top: 1rem;
 }
 
+.location-buttons {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
+.location-buttons button {
+  background-color: #007bff; /* Blue color */
+  border: none;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.location-buttons button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: scale(1.05);
+}
+
+.location-buttons button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0,123,255,0.5);
+}
+
+.Location-form button {
+  background-color: #28a745; /* Green color */
+  border: none;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  margin-left: 10px; /* spacing from inputs */
+}
+
+.Location-form button:hover {
+  background-color: #1e7e34; /* Darker green on hover */
+  transform: scale(1.05);
+}
+
+.Location-form button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(40,167,69,0.5);
+}

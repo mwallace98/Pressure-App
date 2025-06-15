@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './App.css';
+import { use } from 'react';
 
 function App() {
 
@@ -8,36 +9,84 @@ function App() {
   const apiKey = '7fc7cb7c2ea8155f7646dd416eb80f02'
 
   const [weatherData,setWeatherData] = useState({})
+  const[selectedLocation,setSelectedLocation] = useState('home')
+  const [lat,setLat] = useState('42.117039')
+  const [long,setLong] = useState('-71.864723')
 
-  useEffect(() => {
-    axios.get(`https://api.openweathermap.org/data/2.5/weather`, {
+  const locations = {
+     Oxford: { lat: 42.117039, long:-71.864723, label:'Oxford MA'}
+    }
+  const fetchWeather = () => {
+   
+
+     axios.get(`https://api.openweathermap.org/data/2.5/weather`, {
     params: {
       appid: apiKey,
-      lat:42.117039,
-      lon: -71.864723,
+      lat:lat,
+      lon:long,
       units: 'metric'
     }
   })
   .then(res => {
-    console.log(res.data.main,'data')
-    setWeatherData(res.data.main)
+    console.log(res.data,'data')
+    setWeatherData(res.data)
   })
   .catch(err => {
     console.log(err,'err')
   })
+}
+
+  useEffect(() => {
+    fetchWeather()
   },[])
 
-  console.log(weatherData,'weather data')
+  const handleLocationClick = (locKey) => {
+    const loc = locations[locKey];
+    setLat(loc.lat.toString());
+    setLong(loc.long.toString());
+  };
+
+  const resetWeather = () => {
+    setLat(0)
+    setLong(0)
+  }
+
 
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Weather Info</h1>
-        {weatherData.temp ? (
+        <h1>Weather Info for {weatherData.name}</h1>
+
+        <div className="location-buttons">
+          {Object.keys(locations).map(key => (
+            <button key={key} onClick={() => handleLocationClick(key)}>
+              {locations[key].label}
+              
+            </button>
+          ))}
+        </div>
+        <div className='Location-form'>
+          
+          <input 
+            type='number'
+            value={lat}
+            onChange={(e) => setLat(e.target.value)}
+            placeholder='Latitude'
+          />
+          <input 
+            type='number'
+            value={long}
+            onChange={(e) => setLong(e.target.value)}
+            placeholder='Longitude'
+          />
+          <button onClick={fetchWeather}>Get Weather</button>
+          <button onClick={resetWeather}>Reset</button>
+        </div>
+        {weatherData.main ? (
           <div className="weather-card">
-            <p><strong>Temperature:</strong> {weatherData.temp * 9/5 + 32}°F</p>
-            <p><strong>Pressure:</strong> {(weatherData.pressure / 33.89).toFixed(2)} inHg</p>
-            <p><strong>Humidity:</strong> {weatherData.humidity}%</p>
+            <p><strong>Temperature:</strong> {weatherData.main.temp * 9/5 + 32}°F</p>
+            <p><strong>Pressure:</strong> {(weatherData.main.pressure / 33.89).toFixed(2)} inHg</p>
+            <p><strong>Humidity:</strong> {weatherData.main.humidity}%</p>
           </div>
         ) : (
           <p>Loading Weather Data...</p>
