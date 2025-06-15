@@ -91,7 +91,7 @@ function App() {
             <p><strong>Humidity:</strong> {weatherData.main.humidity}%</p>
           </div>
         ) : (
-          <p>Loading Weather Data...</p>
+          <p>Enter Latitude and Longitude</p>
         )}
       </header>
     </div>
