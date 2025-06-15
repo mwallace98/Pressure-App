@@ -2,19 +2,10 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
 .App-header {
-  background-color: #282c34;
+  background-color: #adaeaa;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -28,11 +19,28 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.weather-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 1rem 2rem;
+  margin-top: 1rem;
+  width: 300px;
+  color: #f0eeee;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
+
+.weather-card h2 {
+  margin-bottom: 1rem;
+}
+
+.weather-card p {
+  margin: 0.4rem 0;
+}
+
+.weather-card img {
+  margin-top: 1rem;
+}
+
+
