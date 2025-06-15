@@ -10,20 +10,20 @@ function App() {
 
   const [weatherData,setWeatherData] = useState({})
   const[selectedLocation,setSelectedLocation] = useState('home')
-  const [lat,setLat] = useState('42.117039')
-  const [long,setLong] = useState('-71.864723')
+  const [lat,setLat] = useState('')
+  const [long,setLong] = useState('')
 
   const locations = {
      Oxford: { lat: 42.117039, long:-71.864723, label:'Oxford MA'}
     }
-  const fetchWeather = () => {
+  const fetchWeather = (latValue,longValue) => {
    
 
      axios.get(`https://api.openweathermap.org/data/2.5/weather`, {
     params: {
       appid: apiKey,
-      lat:lat,
-      lon:long,
+      lat:latValue,
+      lon:longValue,
       units: 'metric'
     }
   })
@@ -42,16 +42,17 @@ function App() {
 
   const handleLocationClick = (locKey) => {
     const loc = locations[locKey];
-    setLat(loc.lat.toString());
-    setLong(loc.long.toString());
-    fetchWeather()
+    const latStr = loc.lat.toString();
+    const longStr = loc.long.toString()
+    setLat(latStr);
+    setLong(longStr);
+    fetchWeather(latStr,longStr)
   };
 
-  const resetWeather = () => {
+  function resetWeather(){
     setLat(0)
     setLong(0)
   }
-
 
   return (
     <div className="App">
@@ -62,7 +63,6 @@ function App() {
           {Object.keys(locations).map(key => (
             <button key={key} onClick={() => handleLocationClick(key)}>
               {locations[key].label}
-              
             </button>
           ))}
         </div>
@@ -80,8 +80,8 @@ function App() {
             onChange={(e) => setLong(e.target.value)}
             placeholder='Longitude'
           />
-          <button onClick={fetchWeather}>Get Weather</button>
-          <button onClick={resetWeather}>Reset</button>
+          <button onClick={() => fetchWeather(lat,long)}>Get Weather</button>
+          <button onClick={() => (resetWeather())}>Reset</button>
         </div>
         {weatherData.main ? (
           <div className="weather-card">
