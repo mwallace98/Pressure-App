@@ -11,7 +11,7 @@ const WEATHER_API_KEY = process.env.OPENWEATHER_API_KEY
 
 app.get('/', (req, res) => res.send('Weather API running'));
 
-app.get('/api/weather', async (req,res) => {
+app.get('/data/2.5/weather', async (req,res) => {
     const {lat,lon} = req.query;
 
 
