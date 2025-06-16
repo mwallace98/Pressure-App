@@ -2,13 +2,9 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './App.css';
 import Map from './Pages/map';
-import { use } from 'react';
+
 
 function App() {
-
-
- 
- 
 
   const [weatherData,setWeatherData] = useState({})
   const [lat,setLat] = useState('')
