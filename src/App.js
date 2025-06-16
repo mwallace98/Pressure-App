@@ -2,31 +2,23 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './App.css';
 import Map from './Pages/map';
+import { use } from 'react';
 
 function App() {
 
 
-  const apiKey = process.env.REACT_APP_LOC_API_KEY
-  console.log(apiKey)
+  const locApiKey = process.env.REACT_APP_LOC_API_KEY
+ 
 
   const [weatherData,setWeatherData] = useState({})
   const [lat,setLat] = useState('')
   const [long,setLong] = useState('')
 
-  const locations = {
-     Oxford: { lat: 42.117039, long:-71.864723, label:'Oxford MA'},
-     Douglas: {lat: 42.052819, long: -71.739823, label:'Douglas MA'},
-     Greenfield: {lat: 42.587879, long:-72.600258, label: 'Greenfield MA' },
-     Conway: {lat: 43.978691,long:-71.126213,label: 'Conway NH'  },
-     Narragansett: {lat: 41.433060, long:-71.460182, label: 'Narragansett RI' },
-     Sandwich: {lat: 41.757721, long:-70.500137, label: 'Sandwich MA'}
-    }
-  const fetchWeather = (latValue,longValue) => {
-   
 
+  const fetchWeather = (latValue,longValue) => {
      axios.get(`https://api.openweathermap.org/data/2.5/weather`, {
     params: {
-      appid: apiKey,
+      appid: locApiKey,
       lat:latValue,
       lon:longValue,
       units: 'metric'
@@ -40,9 +32,18 @@ function App() {
   })
 }
 
-  useEffect(() => {
-    fetchWeather()
-  },[])
+
+  
+
+ const locations = {
+     Oxford: { lat: 42.117039, long:-71.864723, label:'Oxford MA'},
+     Douglas: {lat: 42.052819, long: -71.739823, label:'Douglas MA'},
+     Greenfield: {lat: 42.587879, long:-72.600258, label: 'Greenfield MA' },
+     Conway: {lat: 43.978691,long:-71.126213,label: 'Conway NH'  },
+     Narragansett: {lat: 41.433060, long:-71.460182, label: 'Narragansett RI' },
+     Sandwich: {lat: 41.757721, long:-70.500137, label: 'Sandwich MA'}
+    }
+
 
   const handleLocationClick = (locKey) => {
     const loc = locations[locKey];
