@@ -1,21 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './App.css';
-
+import Map from './Pages/map';
 
 function App() {
 
 
-  const apiKey = '7fc7cb7c2ea8155f7646dd416eb80f02'
+  const apiKey = process.env.REACT_APP_LOC_API_KEY
+  console.log(apiKey)
 
   const [weatherData,setWeatherData] = useState({})
-  const[selectedLocation,setSelectedLocation] = useState('home')
   const [lat,setLat] = useState('')
   const [long,setLong] = useState('')
 
   const locations = {
      Oxford: { lat: 42.117039, long:-71.864723, label:'Oxford MA'},
-     Douglas: {lat: 42.052819, long: -71.739823, label:'Douglas MA'}
+     Douglas: {lat: 42.052819, long: -71.739823, label:'Douglas MA'},
+     Greenfield: {lat: 42.587879, long:-72.600258, label: 'Greenfield MA' },
+     Conway: {lat: 43.978691,long:-71.126213,label: 'Conway NH'  },
+     Narragansett: {lat: 41.433060, long:-71.460182, label: 'Narragansett RI' },
+     Sandwich: {lat: 41.757721, long:-70.500137, label: 'Sandwich MA'}
     }
   const fetchWeather = (latValue,longValue) => {
    
@@ -29,7 +33,6 @@ function App() {
     }
   })
   .then(res => {
-    console.log(res.data,'data')
     setWeatherData(res.data)
   })
   .catch(err => {
@@ -56,9 +59,12 @@ function App() {
   }
 
   return (
+    
     <div className="App">
+
       <header className="App-header">
         <h1>Weather Info for {weatherData.name}</h1>
+        
 
         <div className="location-buttons">
           {Object.keys(locations).map(key => (
@@ -89,10 +95,12 @@ function App() {
             <p><strong>Temperature:</strong> {(weatherData.main.temp * 9/5 + 32).toFixed(0)}°F</p>
             <p><strong>Pressure:</strong> {(weatherData.main.pressure / 33.89).toFixed(2)} inHg</p>
             <p><strong>Humidity:</strong> {weatherData.main.humidity}%</p>
+            <p><strong>Wind Speed: {weatherData.wind.speed} MPH</strong></p>
           </div>
         ) : (
           <p>Enter Latitude and Longitude</p>
         )}
+        <Map />
       </header>
     </div>
   );
