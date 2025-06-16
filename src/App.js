@@ -7,7 +7,7 @@ import { use } from 'react';
 function App() {
 
 
-  const locApiKey = process.env.REACT_APP_LOC_API_KEY
+ 
  
 
   const [weatherData,setWeatherData] = useState({})
@@ -16,9 +16,9 @@ function App() {
 
 
   const fetchWeather = (latValue,longValue) => {
-     axios.get(`https://api.openweathermap.org/data/2.5/weather`, {
+     const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
+     axios.get(`${backendUrl}/api/weather`, {
     params: {
-      appid: locApiKey,
       lat:latValue,
       lon:longValue,
       units: 'metric'
@@ -32,9 +32,7 @@ function App() {
   })
 }
 
-useEffect(() => {
-  fetchWeather()
-},[])
+
   
 
  const locations = {
