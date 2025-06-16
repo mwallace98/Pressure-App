@@ -32,7 +32,9 @@ function App() {
   })
 }
 
-
+useEffect(() => {
+  fetchWeather()
+},[])
   
 
  const locations = {
