@@ -9,6 +9,7 @@ app.use(cors())
 const PORT = process.env.PORT || 5000;
 const WEATHER_API_KEY = process.env.OPENWEATHER_API_KEY
 
+
 app.get('/', (req, res) => res.send('Weather API running'));
 
 app.get('/api/weather', async (req,res) => {
