@@ -8,13 +8,13 @@ app.use(cors())
 
 const PORT = process.env.PORT || 5000;
 const WEATHER_API_KEY = process.env.OPENWEATHER_API_KEY
+const MAP_API_KEY = process.env.MAP_API_KEY
 
 
 app.get('/', (req, res) => res.send('Weather API running'));
 
 app.get('/api/weather', async (req,res) => {
     const {lat,lon} = req.query;
-
 
 if (!lat || !lon) {
     return res.status(400).json({ error: 'Latitude and longitude are required.' });
@@ -37,6 +37,24 @@ try {
   } 
 
  })
+
+ app.get('/api/maps', async (req,res) => {
+  const {lat,lng,zoom = 12, maptype = 'hybrid'} = req.query
+  try {
+    const response = await axios.get(
+      `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=${zoom}&format=jpeg&size=400x400&maptype=${maptype}&key=${MAP_API_KEY}`,
+      { responseType: 'arraybuffer' }
+    );
+
+    res.set('Content-Type', 'image/jpeg')
+    res.send(response.data)
+    
+  
+  }catch(error){
+    console.error('Error fetching Maps:', error.message);
+    res.status(500).json({ error: 'Failed to fetch Maps data.' });
+  }
+})
 
  app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

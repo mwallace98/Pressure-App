@@ -98,3 +98,28 @@
   outline: none;
   box-shadow: 0 0 0 3px rgba(40,167,69,0.5);
 }
+
+.map-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.3); /* semi-transparent background */
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  max-width: 420px;
+  margin: 0 auto;
+  backdrop-filter: blur(8px); /* optional: makes background glassy */
+}
+
+.map-image {
+  border-radius: 12px;
+  max-width: 100%;
+  height: auto;
+  opacity: 0.95; /* slightly blend into background */
+  transition: transform 0.3s ease;
+}
+
+.map-image:hover {
+  transform: scale(1.02);
+}

@@ -97,7 +97,7 @@ function App() {
         ) : (
           <p>Enter Latitude and Longitude</p>
         )}
-        <Map />
+        <Map lat={lat} long={long}/>
       </header>
     </div>
   );
