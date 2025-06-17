@@ -65,12 +65,7 @@ app.get('/api/address', async (req,res) => {
   }
 
   try {
-    const response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json`, {
-      params: {
-        address: address,
-        key:GEOCODING_API_KEY
-      }
-    }
+    const response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json&${address}&key=${GEOCODING_API_KEY}`,
     )
     console.log(response.data)
     res.json(response.data)
@@ -80,6 +75,23 @@ app.get('/api/address', async (req,res) => {
       res.status(500).json({ error: 'Failed to fetch address data' });
     }
 })
+
+ app.get('/api/moon', async (req,res) => {
+  const location = req.query
+
+  try{
+    const response = await axios.get(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}`)
+    console.log(express.response)
+    res.json(response.data,'res.data')
+  }
+  
+  catch(err){
+      console.log(err)
+      res.status(500).json({ error: 'Failed to fetch moon data' });
+    }
+ })
+
+
 
 
  app.listen(PORT, () => {
