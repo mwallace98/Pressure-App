@@ -37,11 +37,20 @@ const fetchAddress = (address) => {
     params: {address}
   })
   .then(res => {
+    if (!res.data.results || res.data.results.length === 0) {
+      console.error("No results from geocoding API");
+      return;
+    }
+
+    const location = res.data.results[0].geometry.location;
+    const shortName = res.data.results[0].address_components[0].short_name
+
     console.log(res.data.results[0].address_components[0].short_name,'res.data')
-    setLong(res.data.results[0].geometry.location.lng)
-    setLat(res.data.results[0].geometry.location.lat)
-    fetchWeather(lat,long)
-    setAddress(res.data.results[0].address_components[0].short_name)
+    setLong(location.lng)
+    setLat(location.lat)
+    setAddress(shortName)
+
+    fetchWeather(location.lat,location.lng)
   })
   .catch(err => {
     console.log(err)
