@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './App.css';
-import Map from './Pages/map';
+import Map from './Components/map';
+import Search from './Components/search';
 
 
 function App() {
@@ -59,8 +60,7 @@ function App() {
 
       <header className="App-header">
         <h1>Weather Info for {weatherData.name}</h1>
-        
-
+      
         <div className="location-buttons">
           {Object.keys(locations).map(key => (
             <button key={key} onClick={() => handleLocationClick(key)}>
@@ -95,6 +95,7 @@ function App() {
         ) : (
           <p>Enter Latitude and Longitude</p>
         )}
+        <Search />
         <Map lat={lat} long={long}/>
       </header>
     </div>

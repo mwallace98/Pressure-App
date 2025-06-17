@@ -9,6 +9,7 @@ app.use(cors())
 const PORT = process.env.PORT || 5000;
 const WEATHER_API_KEY = process.env.OPENWEATHER_API_KEY
 const MAP_API_KEY = process.env.MAP_API_KEY
+const GEOCODING_API_KEY = process.env.GEOCODING_API_KEY
 
 
 app.get('/', (req, res) => res.send('Weather API running'));
@@ -55,6 +56,31 @@ try {
     res.status(500).json({ error: 'Failed to fetch Maps data.' });
   }
 })
+
+app.get('/api/address', async (req,res) => {
+  const {address} = req.query 
+
+  if(!address) {
+    return res.status(400).json({error: 'Missing address parameter'})
+  }
+
+  try {
+    const response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json`, {
+      params: {
+        address: address,
+        key:GEOCODING_API_KEY
+      }
+    }
+    )
+    console.log(response.data)
+    res.json(response.data)
+  }
+  catch(err){
+      console.log(err)
+      res.status(500).json({ error: 'Failed to fetch address data' });
+    }
+})
+
 
  app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
