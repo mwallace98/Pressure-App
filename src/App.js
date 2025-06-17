@@ -29,8 +29,6 @@ function App() {
 }
 
 
-  
-
  const locations = {
      Oxford: { lat: 42.117039, long:-71.864723, label:'Oxford MA'},
      Douglas: {lat: 42.052819, long: -71.739823, label:'Douglas MA'},

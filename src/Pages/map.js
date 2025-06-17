@@ -5,7 +5,14 @@ function Map({lat,long}){
 
    
 
-    return (
+    if (!lat || !long) {
+       return (
+      <div style={{ textAlign: "center", marginTop: "1rem", color: "red" }}>
+        <p> Latitude and longitude are required to display the map.</p>
+      </div>
+    );
+  }
+      return (
         <>
         <h1 style={{ textAlign: "center", marginBottom: "1rem" }}>Map</h1>
         <div className="map-container"> 
@@ -17,5 +24,6 @@ function Map({lat,long}){
       </>
     )  
 }
+
 
 export default Map
