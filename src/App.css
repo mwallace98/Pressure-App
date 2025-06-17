@@ -2,20 +2,27 @@
   text-align: center;
 }
 
-
-
 .App-header {
   background-image: url('Background.jpg');
-  background-size: cover;         
-  background-repeat: no-repeat;  
-  background-position: center;    
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   min-height: 100vh;
+  padding: 40px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   font-size: calc(10px + 2vmin);
-  color: #fff;                    
+  color: #fff;
+  backdrop-filter: brightness(0.85) blur(3px);
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .App-link {
@@ -23,15 +30,15 @@
 }
 
 .weather-card {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.15);
   border: 1px solid #ccc;
-  border-radius: 12px;
-  padding: 1rem 2rem;
-  margin-top: 1rem;
-  width: 300px;
-  color: #333333;
+  border-radius: 16px;
+  padding: 1.5rem 2rem;
+  margin-top: 1.5rem;
+  width: 320px;
+  color: #333;
   backdrop-filter: blur(10px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .weather-card h2 {
@@ -39,7 +46,8 @@
 }
 
 .weather-card p {
-  margin: 0.4rem 0;
+  margin: 0.5rem 0;
+  font-weight: 500;
 }
 
 .weather-card img {
@@ -55,7 +63,7 @@
 }
 
 .location-buttons button {
-  background-color: #007bff; /* Blue color */
+  background-color: #007bff;
   border: none;
   color: white;
   padding: 10px 18px;
@@ -63,21 +71,37 @@
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .location-buttons button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+  background-color: #0056b3;
   transform: scale(1.05);
 }
 
 .location-buttons button:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(0,123,255,0.5);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}
+
+.Location-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.Location-form input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  width: 250px;
 }
 
 .Location-form button {
-  background-color: #28a745; /* Green color */
+  background-color: #28a745;
   border: none;
   color: white;
   padding: 10px 18px;
@@ -85,38 +109,37 @@
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  margin-left: 10px; /* spacing from inputs */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .Location-form button:hover {
-  background-color: #1e7e34; /* Darker green on hover */
+  background-color: #1e7e34;
   transform: scale(1.05);
 }
 
 .Location-form button:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(40,167,69,0.5);
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.5);
 }
 
 .map-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
-  background-color: rgba(255, 255, 255, 0.3); /* semi-transparent background */
+  padding: 24px;
+  background-color: rgba(255, 255, 255, 0.3);
   border-radius: 16px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
   max-width: 420px;
-  margin: 0 auto;
-  backdrop-filter: blur(8px); /* optional: makes background glassy */
+  margin-top: 40px;
+  backdrop-filter: blur(8px);
 }
 
 .map-image {
   border-radius: 12px;
   max-width: 100%;
   height: auto;
-  opacity: 0.95; /* slightly blend into background */
+  opacity: 0.95;
   transition: transform 0.3s ease;
 }
 
