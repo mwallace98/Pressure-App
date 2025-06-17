@@ -3,6 +3,8 @@ import React from "react";
 
 function Map({lat,long}){
 
+    const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
+
     if (!lat || !long) {
        return (
       <div style={{ textAlign: "center", marginTop: "1rem", color: "red" }}>
@@ -14,7 +16,7 @@ function Map({lat,long}){
         <>
         <div className="map-container"> 
           <img
-              src={`http://localhost:5000/api/maps?lat=${lat}&lng=${long}&zoom=14&maptype=terrain`}
+              src={`${backendUrl}/api/maps?lat=${lat}&lng=${long}&zoom=14&maptype=terrain`}
               alt="Dynamic Map"
           />
       </div>
