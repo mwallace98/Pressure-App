@@ -55,7 +55,9 @@ const fetchAddress = (address) => {
       <header className="App-header">
         
         <h1>
-          {address ? `Weather Info for ${address}` : 'Enter an Address to get Weather'  }
+          {weatherData.main
+            ? `Weather Info for ${address}`
+            : ''}
         </h1>
       
 
@@ -70,9 +72,9 @@ const fetchAddress = (address) => {
             <p><strong>Humidity:</strong> {weatherData.main.humidity}%</p>
             <p><strong>Wind Speed: {weatherData.wind.speed} MPH</strong></p>
           </div>
-        ) : (
-          'Enter address'
-        )}
+        ) : 
+          'Enter address to Display Weather'
+        }
         <Map lat={lat} long={long}/>
       </header>
     </div>
