@@ -10,6 +10,7 @@ function App() {
   const [weatherData,setWeatherData] = useState({})
   const [lat,setLat] = useState('')
   const [long,setLong] = useState('')
+  const [address,setAddress] = useState('')
 
 
   const fetchWeather = (latValue,longValue) => {
@@ -26,6 +27,22 @@ function App() {
   })
   .catch(err => {
     console.log(err,'err')
+  })
+}
+
+const fetchAddress = (address) => {
+  const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
+  axios.get(`${backendUrl}/api/address` , {
+    params: {address}
+  })
+  .then(res => {
+    console.log(res.data.results[0].geometry.location,'res.data')
+    setLong(res.data.results[0].geometry.location.lng)
+    setLat(res.data.results[0].geometry.location.lat)
+    fetchWeather(lat,long)
+  })
+  .catch(err => {
+    console.log(err)
   })
 }
 
@@ -49,11 +66,6 @@ function App() {
     fetchWeather(latStr,longStr)
   };
 
-  function resetWeather(){
-    setLat(0)
-    setLong(0)
-  }
-
   return (
     
     <div className="App">
@@ -69,7 +81,8 @@ function App() {
           ))}
         </div>
         <div className='Location-form'>
-          <Search />
+          <Search address={address} setAddress={setAddress}/>
+          <button onClick={() => fetchAddress(address)}>Search</button>
         </div>
         {weatherData.main ? (
           <div className="weather-card">
@@ -81,7 +94,6 @@ function App() {
         ) : (
           'Enter address'
         )}
-        
         <Map lat={lat} long={long}/>
       </header>
     </div>
