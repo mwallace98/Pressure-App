@@ -69,21 +69,7 @@ function App() {
           ))}
         </div>
         <div className='Location-form'>
-          
-          <input 
-            type='number'
-            value={lat}
-            onChange={(e) => setLat(e.target.value)}
-            placeholder='Latitude'
-          />
-          <input 
-            type='number'
-            value={long}
-            onChange={(e) => setLong(e.target.value)}
-            placeholder='Longitude'
-          />
-          <button onClick={() => fetchWeather(lat,long)}>Get Weather</button>
-          <button onClick={() => (resetWeather())}>Reset</button>
+          <Search />
         </div>
         {weatherData.main ? (
           <div className="weather-card">
@@ -93,9 +79,9 @@ function App() {
             <p><strong>Wind Speed: {weatherData.wind.speed} MPH</strong></p>
           </div>
         ) : (
-          <p>Enter Latitude and Longitude</p>
+          'Enter address'
         )}
-        <Search />
+        
         <Map lat={lat} long={long}/>
       </header>
     </div>

@@ -2,12 +2,12 @@ import React from "react";
 
 function Search(){
     return (
-        <>
         <div>
-            <input type='search'>Search</input>
+            <input 
+            type="search"
+            placeholder="Search for a location"
+            />
         </div>
-        </>
-        
     )
 }
 
