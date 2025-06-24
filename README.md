@@ -20,10 +20,10 @@ Built with React and Node.js, and powered by Google Maps and OpenWeatherMap APIs
 ## Tech Stack
 
 ### Frontend
-- React (with Hooks)
+- React
 - Axios for HTTP requests
 - Custom CSS for styling
-- Environment variables (`REACT_APP_BACKEND_URL`)
+- Environment variables
 
 ### Backend
 - Node.js + Express
@@ -35,14 +35,14 @@ Built with React and Node.js, and powered by Google Maps and OpenWeatherMap APIs
 - OpenWeatherMap API
 - Google Maps Static API
 - Google Geocoding API
-- (Optional) Visual Crossing Weather API
+- 
 
 ---
 
 ## Features
 
 - Display current weather conditions (temperature in Fahrenheit, pressure, humidity, wind speed)
-- Search by human-readable address
+- Search by address
 - Render a static map image of the searched location
 - Extract and display a short name for the location
 - Handle invalid or missing input gracefully
