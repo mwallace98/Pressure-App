@@ -65,7 +65,7 @@ app.get('/api/address', async (req,res) => {
   }
 
   try {
-    const response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json&${address}&key=${GEOCODING_API_KEY}`,
+    const response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${GEOCODING_API_KEY}`,
     )
     console.log(response.data)
     res.json(response.data)
