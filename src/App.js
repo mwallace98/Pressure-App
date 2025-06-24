@@ -14,8 +14,15 @@ function App() {
   const [address,setAddress] = useState('')
   const [inputAddress, setInputAddress] = useState('')
   
-  const chartData = []
+  const chartData = weatherData?.hourly?.surface_pressure && weatherData?.hourly?.time
+    ?
+    weatherData.hourly.surface_pressure.map((pressureValue, i) => (
+      {
+        pressure:pressureValue
+      }
+    )) :[]
 
+    console.log(chartData,' chart data')
     
 
 
