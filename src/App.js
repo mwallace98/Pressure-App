@@ -15,17 +15,18 @@ function App() {
   
 
 
-  const fetchWeather = (latValue,longValue) => {
+  const fetchWeather = (latitude,longitude,) => {
      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
      axios.get(`${backendUrl}/api/weather`, {
     params: {
-      lat:latValue,
-      lon:longValue,
-      units: 'metric'
+      lat:latitude,
+      lon:longitude,
     }
   })
   .then(res => {
     setWeatherData(res.data)
+    console.log(res.data,'weather response')
+    console.log(weatherData,'weather data')
   })
   .catch(err => {
     console.log(err,'err')
@@ -65,7 +66,7 @@ const fetchAddress = (address) => {
       <header className="App-header">
         
         <h1>
-          {weatherData.main
+          {weatherData.hourly
             ? `Weather Info for ${address}`
             : ''}
         </h1>
@@ -76,12 +77,11 @@ const fetchAddress = (address) => {
           <Search address={inputAddress} setAddress={setInputAddress}/>
           <button onClick={() => fetchAddress(inputAddress)}>Search</button>
         </div>
-        {weatherData.main ? (
+        {weatherData ? (
           <div className="weather-card">
-            <p><strong>Temperature:</strong> {(weatherData.main.temp * 9/5 + 32).toFixed(0)}°F</p>
-            <p><strong>Pressure:</strong> {(weatherData.main.pressure / 33.89).toFixed(2)} inHg</p>
-            <p><strong>Humidity:</strong> {weatherData.main.humidity}%</p>
-            <p><strong>Wind Speed: {weatherData.wind.speed} MPH</strong></p>
+            <p><strong>Temperature:</strong> {(weatherData.hourly.temperature_2m[0])}°F</p>
+            <p><strong>Wind Speed:</strong> {(weatherData.hourly.wind_speed_10m[0])} MPH</p>
+            
           </div>
         ) : 
           'Enter address to Display Weather'

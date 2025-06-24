@@ -22,14 +22,18 @@ if (!lat || !lon) {
  }
 
 try {
-    const response = await axios.get('https://api.openweathermap.org/data/2.5/weather', {
+    const response = await axios.get('https://api.open-meteo.com/v1/forecast',
+       {
       params: {
-        lat,
-        lon,
-        units: 'metric',
-        appid: WEATHER_API_KEY,
+        latitude:lat,
+        longitude:lon,
+        hourly:['surface_pressure','temperature_2m', 'wind_speed_10m','wind_direction_10m','precipitation'],
+        past_days:5,
+        forecast_days:1,
+        timezone:'auto'
       },
     });
+   
 
     res.json(response.data);
   } catch (error) {
