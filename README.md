@@ -48,3 +48,15 @@ Built with React and Node.js, and powered by Google Maps and OpenWeatherMap APIs
 - Handle invalid or missing input gracefully
 - Organized component-based frontend structure
 
+## Future Improvements
+Add lunar data display using Visual Crossing API
+
+Improve user input error handling
+
+Use user's geolocation as default search
+
+Improve responsive design and mobile layout
+
+Cache static map requests to reduce API usage
+
+
