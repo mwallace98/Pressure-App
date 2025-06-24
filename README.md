@@ -1,7 +1,7 @@
 # Weather & Map Explorer
 
 A full-stack web application that allows users to search for any address and get:
-- Live weather information (temperature, wind, humidity, pressure)
+- Live weather information (temperature, wind, humidity, pressure) to check ideal fishing conditions
 - A dynamic map image centered on the location
 
 Built with React and Node.js, and powered by Google Maps and OpenWeatherMap APIs.
@@ -51,7 +51,7 @@ https://pressure-weather-app.vercel.app/
 - Organized component-based frontend structure
 
 ## Future Improvements
-Add lunar data display using Visual Crossing API
+Add Moon Phase using Visual Crossing API
 
 Improve user input error handling
 
