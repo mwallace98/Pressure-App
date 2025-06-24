@@ -7,7 +7,6 @@ const app = express()
 app.use(cors())
 
 const PORT = process.env.PORT || 5000;
-const WEATHER_API_KEY = process.env.OPENWEATHER_API_KEY
 const MAP_API_KEY = process.env.MAP_API_KEY
 const GEOCODING_API_KEY = process.env.GEOCODING_API_KEY
 

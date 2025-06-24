@@ -16,15 +16,12 @@ function App() {
   
   const chartData = weatherData?.hourly?.surface_pressure && weatherData?.hourly?.time
     ?
-    weatherData.hourly.surface_pressure.map((pressureValue, i) => (
+    weatherData.hourly.surface_pressure.map((pressureValue,i) => (
       {
-        pressure:pressureValue
-      }
-    )) :[]
-
-    console.log(chartData,' chart data')
-    
-
+        name: weatherData.hourly.time[i].split('T')[0],
+        Pressure:pressureValue
+      })) 
+      .filter((_,i) => i % 6 === 0):[]
 
   const fetchWeather = (latitude,longitude,) => {
      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
