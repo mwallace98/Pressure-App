@@ -9,7 +9,7 @@ Built with React and Node.js, and powered by Google Maps and OpenWeatherMap APIs
 ---
 ## Live Demo
 
-pressure-weather-app.vercel.app
+https://pressure-weather-app.vercel.app/
 ---
 
 ## Preview
