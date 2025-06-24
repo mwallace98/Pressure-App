@@ -7,7 +7,9 @@ A full-stack web application that allows users to search for any address and get
 Built with React and Node.js, and powered by Google Maps and OpenWeatherMap APIs.
 
 ---
+## Live Demo
 
+pressure-weather-app.vercel.app
 ---
 
 ## Preview
