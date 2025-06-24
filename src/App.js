@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css';
 import Map from './Components/map';
 import Search from './Components/search';
+import Chart from './Components/chart';
 
 
 function App() {
@@ -13,6 +14,9 @@ function App() {
   const [address,setAddress] = useState('')
   const [inputAddress, setInputAddress] = useState('')
   
+  const chartData = []
+
+    
 
 
   const fetchWeather = (latitude,longitude,) => {
@@ -77,7 +81,7 @@ const fetchAddress = (address) => {
           <Search address={inputAddress} setAddress={setInputAddress}/>
           <button onClick={() => fetchAddress(inputAddress)}>Search</button>
         </div>
-        {weatherData ? (
+        {weatherData.hourly ? (
           <div className="weather-card">
             <p><strong>Temperature:</strong> {(weatherData.hourly.temperature_2m[0])}°F</p>
             <p><strong>Wind Speed:</strong> {(weatherData.hourly.wind_speed_10m[0])} MPH</p>
@@ -86,6 +90,7 @@ const fetchAddress = (address) => {
         ) : 
           'Enter address to Display Weather'
         }
+        <Chart data={chartData}/>
         <Map lat={lat} long={long}/>
       </header>
     </div>
