@@ -12,6 +12,7 @@ function App() {
   const [long,setLong] = useState('')
   const [address,setAddress] = useState('')
   const [inputAddress, setInputAddress] = useState('')
+  
 
 
   const fetchWeather = (latValue,longValue) => {
@@ -45,10 +46,10 @@ const fetchAddress = (address) => {
     const location = res.data.results[0].geometry.location;
     const shortName = res.data.results[0].address_components[0].short_name
 
-    console.log(res.data.results[0].address_components[0].short_name,'res.data')
     setLong(location.lng)
     setLat(location.lat)
     setAddress(shortName)
+    
 
     fetchWeather(location.lat,location.lng)
   })
@@ -68,6 +69,7 @@ const fetchAddress = (address) => {
             ? `Weather Info for ${address}`
             : ''}
         </h1>
+        
       
 
         <div className='Location-form'>
