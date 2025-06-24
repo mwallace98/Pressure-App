@@ -14,12 +14,12 @@ import {
 
 
 function Chart(props){
-	const {weatherData} = props
+	const {data} = props
 
 	return (
 		<ResponsiveContainer width="100%" height={300}>
       <LineChart
-        data={weatherData}
+        data={data}
         margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
       >
         <CartesianGrid strokeDasharray="3 3" />
