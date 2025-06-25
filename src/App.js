@@ -55,8 +55,6 @@ function App() {
   })
   .then(res => {
     setWeatherData(res.data)
-    console.log(res.data,'weather response')
-    console.log(weatherData,'weather data')
   })
   .catch(err => {
     console.log(err,'err')
