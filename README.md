@@ -1,10 +1,11 @@
 # Weather & Map Explorer
 
 A full-stack web application that allows users to search for any address and get:
-- Live weather information (temperature, wind, humidity, pressure) to check ideal fishing conditions
+- Live weather information (temperature, wind, pressure) to check ideal fishing conditions and show current trend in pressure
 - A dynamic map image centered on the location
+- a Cahrt showign pressure range
 
-Built with React and Node.js, and powered by Google Maps and OpenWeatherMap APIs.
+Built with React and Node.js, and powered by Google Maps and Open-Meteo weather APIs.
 
 ---
 ## Live Demo
@@ -14,7 +15,8 @@ https://pressure-weather-app.vercel.app/
 
 ## Preview
 
-![image](https://github.com/user-attachments/assets/c0fdd1cd-5a27-4347-8b51-c076edf55697)
+![image](https://github.com/user-attachments/assets/4bd739dd-0a86-4454-bd1c-5b9af1afa9a1)
+
 
 
 ---
@@ -25,16 +27,12 @@ https://pressure-weather-app.vercel.app/
 - React
 - Axios for HTTP requests
 - Custom CSS for styling
-- Environment variables
 
 ### Backend
 - Node.js + Express
-- Axios for server-side API requests
-- dotenv for secure config management
-- CORS enabled
 
 ### APIs Used
-- OpenWeatherMap API
+- Open-Meteo
 - Google Maps Static API
 - Google Geocoding API
 - 
@@ -43,7 +41,7 @@ https://pressure-weather-app.vercel.app/
 
 ## Features
 
-- Display current weather conditions (temperature in Fahrenheit, pressure, humidity, wind speed)
+- Display current weather conditions (temperature in Fahrenheit, pressure, wind speed)
 - Search by address
 - Render a static map image of the searched location
 - Extract and display a short name for the location
@@ -59,6 +57,5 @@ Use user's geolocation as default search
 
 Improve responsive design and mobile layout
 
-Cache static map requests to reduce API usage
 
 
