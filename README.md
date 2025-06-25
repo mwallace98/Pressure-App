@@ -1,9 +1,9 @@
-# Weather & Map Explorer
+# Fishing Weather/Pressure Tracker
 
 A full-stack web application that allows users to search for any address and get:
-- Live weather information (temperature, wind, pressure) to check ideal fishing conditions and show current trend in pressure
+- Live weather information (temperature, wind, pressure) to check ideal fishing conditions based on current trend in pressure
 - A dynamic map image centered on the location
-- a Cahrt showign pressure range
+- a Chart showing pressure range
 
 Built with React and Node.js, and powered by Google Maps and Open-Meteo weather APIs.
 
