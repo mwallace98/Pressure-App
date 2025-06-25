@@ -17,7 +17,7 @@ function Chart(props){
 	const {data} = props
 
 	return (
-		<ResponsiveContainer width="100%" height='100%'>
+		<ResponsiveContainer width="100%" height={300}>
       <LineChart
         data={data}
         margin={{ top: 5, right: 1, left: 20, bottom: 5 }}
@@ -32,7 +32,7 @@ function Chart(props){
 		/>
         <YAxis domain={[975,1025]}/>
         <Tooltip />
-        <Line type="monotone" dataKey="Pressure" stroke="#ff6347" strokeWidth={2} />
+        <Line type="monotone" dataKey="pressure" stroke="#ff6347" strokeWidth={2} dot={false}/>
       </LineChart>
     </ResponsiveContainer>
 	)

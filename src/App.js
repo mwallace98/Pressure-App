@@ -13,15 +13,19 @@ function App() {
   const [long,setLong] = useState('')
   const [address,setAddress] = useState('')
   const [inputAddress, setInputAddress] = useState('')
+
+ 
   
   const chartData = weatherData?.hourly?.surface_pressure && weatherData?.hourly?.time
     ?
     weatherData.hourly.surface_pressure.map((pressureValue,i) => (
       {
-        name: weatherData.hourly.time[i].split('T')[0],
-        Pressure:pressureValue
+        name: weatherData.hourly.time[i],
+        pressure:pressureValue
       })) 
       .filter((_,i) => i % 6 === 0):[]
+
+
 
   const fetchWeather = (latitude,longitude,) => {
      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
@@ -87,7 +91,7 @@ const fetchAddress = (address) => {
         </div>
         {weatherData.hourly ? (
           <div className="weather-card">
-            <p><strong>Temperature:</strong> {(weatherData.hourly.temperature_2m[0])}°F</p>
+            <p><strong>Temperature:</strong> {(weatherData.hourly.temperature_2m[0] * 9/5 + 32).toFixed(1) }°F</p>
             <p><strong>Wind Speed:</strong> {(weatherData.hourly.wind_speed_10m[0])} MPH</p>
             
           </div>
