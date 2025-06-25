@@ -15,7 +15,8 @@ https://pressure-weather-app.vercel.app/
 
 ## Preview
 
-![image](https://github.com/user-attachments/assets/c0fdd1cd-5a27-4347-8b51-c076edf55697)
+![image](https://github.com/user-attachments/assets/4bd739dd-0a86-4454-bd1c-5b9af1afa9a1)
+
 
 
 ---
