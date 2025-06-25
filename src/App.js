@@ -6,6 +6,7 @@ import Search from './Components/search';
 import Chart from './Components/chart';
 
 
+
 function App() {
 
   const [weatherData,setWeatherData] = useState({})
@@ -14,6 +15,7 @@ function App() {
   const [address,setAddress] = useState('')
   const [inputAddress, setInputAddress] = useState('')
 
+
  
   
   const chartData = weatherData?.hourly?.surface_pressure && weatherData?.hourly?.time
@@ -21,10 +23,26 @@ function App() {
     weatherData.hourly.surface_pressure.map((pressureValue,i) => (
       {
         name: weatherData.hourly.time[i],
-        pressure:pressureValue
+        pressure:pressureValue,
+        temperature: weatherData.hourly.temperature_2m
       })) 
       .filter((_,i) => i % 6 === 0):[]
 
+     function getCurrentTemperature(weatherData) {
+        if (!weatherData?.hourly?.time || !weatherData?.hourly?.temperature_2m) return null;
+
+        const now = new Date();
+        const times = weatherData.hourly.time.map(t => new Date(t));
+
+        const closestIndex = times.reduce((closestIdx, time, idx) =>
+          Math.abs(time - now) < Math.abs(times[closestIdx] - now) ? idx : closestIdx,
+          0
+        );
+
+        const tempC = weatherData.hourly.temperature_2m[closestIndex];
+        return (tempC * 9) / 5 + 32;
+}
+     
 
 
   const fetchWeather = (latitude,longitude,) => {
@@ -91,9 +109,8 @@ const fetchAddress = (address) => {
         </div>
         {weatherData.hourly ? (
           <div className="weather-card">
-            <p><strong>Temperature:</strong> {(weatherData.hourly.temperature_2m[0] * 9/5 + 32).toFixed(1) }°F</p>
+            <p><strong>Temperature:</strong> {getCurrentTemperature(weatherData).toFixed(1) }°F</p>
             <p><strong>Wind Speed:</strong> {(weatherData.hourly.wind_speed_10m[0])} MPH</p>
-            
           </div>
         ) : 
           'Enter address to Display Weather'

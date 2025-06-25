@@ -26,10 +26,10 @@ try {
       params: {
         latitude:lat,
         longitude:lon,
-        hourly:['surface_pressure','temperature_2m', 'wind_speed_10m','wind_direction_10m','precipitation'],
+        hourly:['surface_pressure','temperature_2m', 'wind_speed_10m','wind_direction_10m','precipitation',],
         past_days:5,
         forecast_days:1,
-        timezone:'auto'
+        timezone:'auto',
       },
     });
    
