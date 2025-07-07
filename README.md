@@ -44,9 +44,9 @@ https://pressure-weather-app.vercel.app/
 - Display current weather conditions (temperature in Fahrenheit, pressure, wind speed)
 - Search by address
 - Render a static map image of the searched location
-- Extract and display a short name for the location
-- Handle invalid or missing input gracefully
-- Organized component-based frontend structure
+- Display a short name for the location
+- Handle invalid or missing input 
+
 
 ## Future Improvements
 Add Moon Phase using Visual Crossing API
