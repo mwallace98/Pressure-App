@@ -25,8 +25,7 @@ https://pressure-weather-app.vercel.app/
 
 ### Frontend
 - React
-- Axios for HTTP requests
-- Custom CSS for styling
+  
 
 ### Backend
 - Node.js + Express
@@ -35,7 +34,7 @@ https://pressure-weather-app.vercel.app/
 - Open-Meteo
 - Google Maps Static API
 - Google Geocoding API
-- 
+  
 
 ---
 
@@ -55,7 +54,7 @@ Improve user input error handling
 
 Use user's geolocation as default search
 
-Improve responsive design and mobile layout
+Improve responsive design
 
 
 
