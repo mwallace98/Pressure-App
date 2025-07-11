@@ -74,7 +74,6 @@ const fetchAddress = (address) => {
 
     const location = res.data.results[0].geometry.location;
     const searchName = res.data.results[0].formatted_address
-    console.log( res.data.results[0].formatted_address,' res.data.results[0].address_components[0]')
 
     setLong(location.lng)
     setLat(location.lat)
