@@ -73,11 +73,12 @@ const fetchAddress = (address) => {
     }
 
     const location = res.data.results[0].geometry.location;
-    const shortName = res.data.results[0].address_components[0].short_name
+    const searchName = res.data.results[0].formatted_address
+    console.log( res.data.results[0].formatted_address,' res.data.results[0].address_components[0]')
 
     setLong(location.lng)
     setLat(location.lat)
-    setAddress(shortName)
+    setAddress(searchName)
     
 
     fetchWeather(location.lat,location.lng)
